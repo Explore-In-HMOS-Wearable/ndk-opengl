@@ -94,12 +94,10 @@ struct Index {
           .width('90%')
           .height('90%')
           .onLoad((xComponentContext) => {
-            console.log("onLoad")
             this.renderContext = xComponentContext;
             this.xComponentContext = xComponentContext;
 
             nativeEntry.setGameOverCallback(xComponentContext, (finalScore: number) => {
-              console.log("GameOverCallback")
               this.finalScore = finalScore;
               this.gameOver = true;
               this.showGameOverDialog();
@@ -109,22 +107,22 @@ struct Index {
 
       Column() {
         Row() {
-          Text("Space Dodge")
+          Text('Space Dodge')
             .fontSize(12)
             .fontWeight(900)
             .fontColor(Color.White)
-            .margin({ top: "5%" })
+            .margin({ top: '5%' })
         }
 
         Row() {
           if (!this.isPlaying && !this.gameOver) {
             Column() {
-              Text("TAP TO START")
+              Text('TAP TO START')
                 .fontSize(28)
                 .fontWeight(700)
                 .fontColor('#ffff00')
 
-              Text("Swipe left/right to dodge")
+              Text('Swipe left/right to dodge')
                 .fontSize(14)
                 .fontColor('#ffffff88')
                 .margin({ top: 10 })
@@ -141,7 +139,7 @@ struct Index {
         .layoutWeight(1)
 
         Row() {
-          Text("Powered By OpenGL ES")
+          Text('Powered By OpenGL ES')
             .fontSize(8)
             .fontColor('#ff961717')
             .fontWeight(700)
@@ -153,7 +151,7 @@ struct Index {
     }
     .width(CommonConstants.FULL_PARENT)
     .height(CommonConstants.FULL_PARENT)
-    .backgroundColor("#FF0A0A19")
+    .backgroundColor('#FF0A0A19')
     .gesture(
       PanGesture(this.panOption)
         .onActionStart((event: GestureEvent) => {
@@ -168,10 +166,6 @@ struct Index {
 
           const currentTime = Date.now()
           const timeSinceLastMove = currentTime - this.lastMoveTime
-
-          // if (timeSinceLastMove < this.moveThrottleMs) {
-          //   return
-          // }
 
           const deltaOffset = event.offsetX - this.lastProcessedOffset
           this.lastProcessedOffset = event.offsetX
@@ -196,10 +190,6 @@ struct Index {
           }
         })
         .onActionEnd((event: GestureEvent) => {
-
-          // this.accumulatedOffset = 0
-          // this.lastProcessedOffset = 0
-          // this.offsetX = 0
         })
     )
   }
